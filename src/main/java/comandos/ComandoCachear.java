@@ -14,9 +14,17 @@ public class ComandoCachear implements CommandExecutor {
             Bukkit.getConsoleSender().sendMessage("[PolisYCacos] You can't execute this command from console.");
             return false;
         } else {
-            Player player = (Player) sender;
 
-            player.sendMessage("lel");
+            // La llamo caco, pero aquí mismo es un poli
+            Player caco = (Player) sender;
+
+            // Ahora creo el (Player) poli
+            Player poli = caco;
+
+            // Ahora cambio caco a que sea el caco más cercano
+            funsiones.getCacoCercano(caco);
+
+            poli.sendMessage("caco más cercano es: "+caco.getName());
 
             return false;
         }
