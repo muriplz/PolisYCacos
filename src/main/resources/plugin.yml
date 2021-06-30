@@ -1,0 +1,9 @@
+main: Prinsipal
+version: 0.1
+name: PolisYCacos
+author: MuriPlz
+commands:
+  cachear:
+    description: Cachea a un jugador. Sólo para policías.
+    permission: polisycacos.cachear
+
