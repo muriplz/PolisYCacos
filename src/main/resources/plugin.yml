@@ -5,5 +5,5 @@ author: MuriPlz
 commands:
   cachear:
     description: Cachea a un jugador. Sólo para policías.
-    permission: polisycacos.poli
+    permission: polisycacos.cachear
 

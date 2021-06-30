@@ -7,6 +7,8 @@ import org.bukkit.entity.Player;
 
 // Buenos días, he aquí un ejemplo de como abusar de static :)
 public class funsiones {
+
+    // Cambia el Player poli por el caco más cercano
     public static void getCacoCercano(Player poli) {
 
         // Pillo las coordenadas del policía
