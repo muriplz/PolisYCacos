@@ -16,6 +16,7 @@ public class ComandoCachear implements CommandExecutor {
         } else {
             Player player = (Player) sender;
 
+            player.sendMessage("lel");
 
             return false;
         }
