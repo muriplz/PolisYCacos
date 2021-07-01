@@ -1,3 +1,4 @@
+import Listeners.InventoryClickCacheo;
 import comandos.ComandoCachear;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -19,6 +20,7 @@ public class Prinsipal extends JavaPlugin {
     public void onEnable(){
         plugin = this;
         registerCommands();
+        registerEvents();
         defaultConfig();
         Bukkit.getConsoleSender().sendMessage(name+ChatColor.GRAY+" The plugin has been activated. version: "+ChatColor.GREEN+version);
     }
@@ -32,6 +34,9 @@ public class Prinsipal extends JavaPlugin {
 
     public void onDisable() {
         Bukkit.getConsoleSender().sendMessage(name+ChatColor.WHITE+" The plugin has been deactivated.");
+    }
+    public void registerEvents(){
+        getServer().getPluginManager().registerEvents(new InventoryClickCacheo(), this);
     }
     public void registerCommands(){
 

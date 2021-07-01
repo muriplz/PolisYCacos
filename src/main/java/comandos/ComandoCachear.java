@@ -5,6 +5,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.jetbrains.annotations.NotNull;
 
 public class ComandoCachear implements CommandExecutor {
@@ -32,7 +33,8 @@ public class ComandoCachear implements CommandExecutor {
                 poli.sendMessage("No hay cacos cerca.");
                 return false;
             }
-            poli.openInventory(caco.getInventory());
+            Inventory inv = caco.getInventory();
+            poli.openInventory(inv);
 
             return true;
         }
