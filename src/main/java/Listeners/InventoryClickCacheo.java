@@ -8,8 +8,6 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 
 public class InventoryClickCacheo implements Listener {
-    private Prinsipal prinsipal;
-    prinsipal = new Prinsipal(this);
     @EventHandler
     public void onPlayerOpenInventory(InventoryClickEvent e) {
 
