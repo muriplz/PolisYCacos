@@ -12,10 +12,21 @@ public class Prinsipal extends JavaPlugin {
     FileConfiguration config = this.getConfig();
     public String name = ChatColor.YELLOW+"["+ChatColor.WHITE+pdffile.getName()+ChatColor.YELLOW+"]";
     public String version = pdffile.getVersion();
+    public static Prinsipal plugin;
 
 
     public void onEnable(){
+        plugin = this;
+        registerCommands();
+        defaultConfig();
         Bukkit.getConsoleSender().sendMessage(name+ChatColor.GRAY+" The plugin has been activated. version: "+ChatColor.GREEN+version);
+    }
+
+    public void defaultConfig(){
+        // Para crear la config.yml
+        config.addDefault("distancia-cachear", 7);
+        config.options().copyDefaults(true);
+        saveDefaultConfig();
     }
 
     public void onDisable() {

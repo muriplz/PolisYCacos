@@ -14,21 +14,25 @@ public class ComandoCachear implements CommandExecutor {
             Bukkit.getConsoleSender().sendMessage("[PolisYCacos] You can't execute this command from console.");
             return false;
         } else {
-            // La llamo caco, pero aquí mismo es un poli
-            Player caco = (Player) sender;
 
-            // Ahora creo el (Player) poli
-            Player poli = caco;
+            Player poli = (Player) sender;
 
-            if(!poli.hasPermission("polisycacos.poli")){
-                poli.sendMessage("No tienes permiso para usar este comando.");
+            if(!poli.hasPermission("pyc.poli")){
+                poli.sendMessage("No eres policia.");
+                return false;
             }
-            // Ahora cambio caco a que sea el caco más cercano
-            funsiones.getCacoCercano(caco);
 
+            Player caco = funsiones.getCacoCercano(poli);
+
+
+
+            if(caco==null){
+                poli.sendMessage("No hay cacos cerca.");
+                return false;
+            }
             poli.sendMessage("Caco más cercano es: "+caco.getName());
 
-            return false;
+            return true;
         }
     }
 }

@@ -1,59 +1,51 @@
 package comandos;
 
-
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
 
 // Buenos días, he aquí un ejemplo de como abusar de static :)
 public class funsiones {
 
-    // Cambia el Player poli por el caco más cercano
-    public static void getCacoCercano(Player poli) {
+    private static double DISTANCIA_CACHEAR = 7;
+    // Devuelve el caco más cercano
+    public static Player getCacoCercano(Player poli) {
+        // Inicializo el caco más cercano
+        Player cacoCercano = null;
 
         // Pillo las coordenadas del policía
         Location locPoli = poli.getLocation();
 
-        // Hago un ciclo por todos los jugadores online
-        for(Player caco : Bukkit.getServer().getOnlinePlayers()){
+        // Inicializo el módulo de menor tamaño
+        double moduloMenor = 30000000;
 
-            // Pillo las coordenadas del caco
-            Location locCaco = caco.getLocation();
+        // Miro que haya jugadores conectados
+        if(!Bukkit.getServer().getOnlinePlayers().isEmpty()){
 
-            // Inicializo el vector posición (punto A del vector AB -> el policía)
-            double[] vectorPosicion;
-            vectorPosicion = new double[3];
+            // Hago un ciclo por todos los jugadores online
+            for(Player caco : Bukkit.getServer().getOnlinePlayers()){
 
-            // Posición x del vector (x,y,z)
-            vectorPosicion[0] = locCaco.getX() - locPoli.getX();
+                // Pillo las coordenadas del caco
+                Location locCaco = caco.getLocation();
 
-            // Posición y del vector (x,y,z)
-            vectorPosicion[1] = locCaco.getY() - locPoli.getY();
+                // Distancia entre caco y poli
+                double modulo = locPoli.distance(locCaco);
 
-            // Posición z del vector (x,y,z)
-            vectorPosicion[2] = locCaco.getZ() - locPoli.getZ();
-
-            // Módulo del vector v = (x,y,z)
-
-
-            // Formula módulo = raíz cuadrada( x ^ 2 + y ^ 2 + z ^ 2 )
-            double modulo = Math.sqrt(sumaVector(cuadradoVector(vectorPosicion)));
-
-            // Inicializo el módulo de menor tamaño
-            double moduloMenor = 15000000;
-
-            // Si el módulo es más pequeño que cualquier otro, nos quedamos con ese, para sacar el vector de menor módulo
-            // También es necesario que no sea un poli
-            if(modulo < moduloMenor && !caco.hasPermission("polisycacos.poli")){
-
-                moduloMenor = modulo;
-
-                // Aquí lo que hago es devolver al caco que menor módulo tiene como el poli, aunque no sea el poli. (consecuencia de ser un "void" para simplificar)
-                poli = caco;
+                // Si el módulo es más pequeño que cualquier otro, nos quedamos con ese, para sacar el vector de menor módulo
+                // También es necesario que no sea un poli
+                if(modulo < moduloMenor && !caco.hasPermission("pyc.poli")){
+                    moduloMenor = modulo;
+                    cacoCercano = caco;
+                }
             }
+        }else{
+            return null;
         }
-
-
+        if(moduloMenor>DISTANCIA_CACHEAR){
+            return null;
+        }
+        return cacoCercano;
     }
 
     // Función para hallar vector al cuadrado; es decir, (x^2,y^2,z^2) (vale para cualquier n perteneciente a N)
