@@ -3,7 +3,6 @@ package comandos;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
 
 // Buenos días, he aquí un ejemplo de como abusar de static :)
