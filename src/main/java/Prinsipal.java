@@ -4,6 +4,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
+import tabs.devolverVacio;
 
 import java.util.Objects;
 
@@ -33,6 +34,10 @@ public class Prinsipal extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(name+ChatColor.WHITE+" The plugin has been deactivated.");
     }
     public void registerCommands(){
+
+        // Comando /cachear
         Objects.requireNonNull(this.getCommand("cachear")).setExecutor(new ComandoCachear());
+        Objects.requireNonNull(getCommand("cachear")).setTabCompleter(new devolverVacio());
+
     }
 }

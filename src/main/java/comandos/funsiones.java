@@ -1,6 +1,7 @@
 package comandos;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
@@ -49,23 +50,28 @@ public class funsiones {
     }
 
     // Función para hallar vector al cuadrado; es decir, (x^2,y^2,z^2) (vale para cualquier n perteneciente a N)
-    public static double[] cuadradoVector (double[] vector){
+   public static double[] cuadradoVector (double[] vector){
 
-        // Repito esto las veces que sean dependiendo de la dimensión de "vector"
-        for(int i=0;i<vector.length;i++){
+       // Repito esto las veces que sean dependiendo de la dimensión de "vector"
+       for(int i=0;i<vector.length;i++){
 
-            // Calculo cada coordenada al cuadrado (no encuentro forma de hacer operaciones elementales --> son operaciones elementales si K * v = (K*x,K*y,K*z) siendo v un vector)
-            vector[i]=vector[i]*vector[i];
-        }
-        return vector;
-    }
+           // Calculo cada coordenada al cuadrado (no encuentro forma de hacer operaciones elementales --> son operaciones elementales si K * v = (K*x,K*y,K*z) siendo v un vector)
+           vector[i]=vector[i]*vector[i];
+       }
+       return vector;
+   }
 
-    // Función para hallar cuanto vale x+y+z en un vector
-    public static int sumaVector(double[] vector){
-        int suma = 0;
-        for (double v : vector) {
-            suma += v;
-        }
-        return suma;
+   // Función para hallar cuanto vale x+y+z en un vector
+   public static int sumaVector(double[] vector){
+       int suma = 0;
+       for (double v : vector) {
+           suma += v;
+       }
+       return suma;
+   }
+
+    // Para mandar mensajes con base hexadecimal (&1,&2,&3,...)
+    public static void sendMessage(Player player,String message){
+        player.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
     }
 }
