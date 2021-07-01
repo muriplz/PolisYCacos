@@ -8,6 +8,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 public class ComandoCachear implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
@@ -27,13 +29,13 @@ public class ComandoCachear implements CommandExecutor {
                 return false;
             }
 
-            Player caco = funsiones.getCacoCercano(poli);
+            // Player caco = funsiones.getCacoCercano(poli);
 
-            if(caco==null){
-                poli.sendMessage("No hay cacos cerca.");
-                return false;
-            }
-            Inventory inv = caco.getInventory();
+  //          if(caco==null){
+  //              poli.sendMessage("No hay cacos cerca.");
+  //              return false;
+   //         }
+            Inventory inv = Objects.requireNonNull(Bukkit.getPlayer("MuriPlz")).getInventory();
             poli.openInventory(inv);
 
             return true;

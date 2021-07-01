@@ -3,22 +3,25 @@ import comandos.ComandoCachear;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 import tabs.devolverVacio;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Prinsipal extends JavaPlugin {
+    private ArrayList<Inventory> inventoriosCacheados;
     PluginDescriptionFile pdffile = getDescription();
     FileConfiguration config = this.getConfig();
     public String name = ChatColor.YELLOW+"["+ChatColor.WHITE+pdffile.getName()+ChatColor.YELLOW+"]";
     public String version = pdffile.getVersion();
-    public static Prinsipal plugin;
 
 
     public void onEnable(){
-        plugin = this;
         registerCommands();
         registerEvents();
         defaultConfig();
