@@ -2,6 +2,7 @@ main: Prinsipal
 version: 0.1
 name: PolisYCacos
 author: MuriPlz
+api-version: 1.16
 commands:
   cachear:
     description: Cachea a un jugador. Sólo para policías.

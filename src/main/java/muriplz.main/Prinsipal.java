@@ -1,10 +1,10 @@
+package muriplz.main;
+
 import Listeners.InventoryClickCacheo;
-import comandos.ComandoCachear;
+import muriplz.main.comandos.ComandoCachear;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -20,7 +20,7 @@ public class Prinsipal extends JavaPlugin {
     public String name = ChatColor.YELLOW+"["+ChatColor.WHITE+pdffile.getName()+ChatColor.YELLOW+"]";
     public String version = pdffile.getVersion();
 
-
+    @Override
     public void onEnable(){
         registerCommands();
         registerEvents();
@@ -34,7 +34,7 @@ public class Prinsipal extends JavaPlugin {
         config.options().copyDefaults(true);
         saveDefaultConfig();
     }
-
+    @Override
     public void onDisable() {
         Bukkit.getConsoleSender().sendMessage(name+ChatColor.WHITE+" The plugin has been deactivated.");
     }
@@ -44,7 +44,7 @@ public class Prinsipal extends JavaPlugin {
     public void registerCommands(){
 
         // Comando /cachear
-        Objects.requireNonNull(this.getCommand("cachear")).setExecutor(new ComandoCachear());
+        Objects.requireNonNull(getCommand("cachear")).setExecutor(new ComandoCachear(this));
         Objects.requireNonNull(getCommand("cachear")).setTabCompleter(new devolverVacio());
 
     }

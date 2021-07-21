@@ -1,5 +1,6 @@
-package comandos;
+package muriplz.main.comandos;
 
+import muriplz.main.Prinsipal;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -8,10 +9,19 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 public class ComandoCachear implements CommandExecutor {
-    @Override
+
+    private final Prinsipal plugin;
+
+    public ComandoCachear(Prinsipal plugin) {
+        this.plugin = plugin;
+    }
+
+
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         if (!(sender instanceof Player)) {
             Bukkit.getConsoleSender().sendMessage("[PolisYCacos] You can't execute this command from console.");
@@ -29,13 +39,13 @@ public class ComandoCachear implements CommandExecutor {
                 return false;
             }
 
-            // Player caco = funsiones.getCacoCercano(poli);
+            List<UUID> cacos = funsiones.getCacosCercanos(poli);
 
-  //          if(caco==null){
-  //              poli.sendMessage("No hay cacos cerca.");
-  //              return false;
-   //         }
-            Inventory inv = Objects.requireNonNull(Bukkit.getPlayer("MuriPlz")).getInventory();
+            if(cacos.size()==0){
+                poli.sendMessage("No hay cacos cerca.");
+                return false;
+            }
+            Inventory inv = null;
             poli.openInventory(inv);
 
             return true;
