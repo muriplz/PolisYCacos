@@ -1,6 +1,7 @@
 package muriplz.main.comandos;
 
 import muriplz.main.Prinsipal;
+import muriplz.main.inventory.SelectorDeCaco;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -35,7 +36,7 @@ public class ComandoCachear implements CommandExecutor {
             }
 
             if(!poli.hasPermission("pyc.poli")){
-                poli.sendMessage("No eres policia.");
+                poli.sendMessage("No eres policía.");
                 return false;
             }
 
@@ -45,8 +46,8 @@ public class ComandoCachear implements CommandExecutor {
                 poli.sendMessage("No hay cacos cerca.");
                 return false;
             }
-            Inventory inv = null;
-            poli.openInventory(inv);
+            SelectorDeCaco gui = new SelectorDeCaco();
+            poli.openInventory(gui.getInventoryTrue(poli));
 
             return true;
         }

@@ -1,6 +1,6 @@
 package muriplz.main;
 
-import Listeners.InventoryClickCacheo;
+import muriplz.main.Listeners.InventoryClickCacheo;
 import muriplz.main.comandos.ComandoCachear;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
